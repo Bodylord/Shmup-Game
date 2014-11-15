@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 6df4bc087d470744d8b363df5344fd6b
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Bullethere: {fileID: 100000, guid: db1a6d92e6b5b5f498e7637befb81ca8, type: 2}
+  - enemyscript: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

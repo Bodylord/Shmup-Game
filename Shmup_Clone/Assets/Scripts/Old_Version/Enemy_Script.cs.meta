@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4f342a0319cd60d419be1f4865cff0c7
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - self: {fileID: 100000, guid: 86292d27e6fc15f4db830fe09944a0b7, type: 2}
+  - playerShip: {fileID: 100012, guid: dd6c66f18c81d4348af2f3282b9d4b12, type: 2}
+  - playerBullet: {fileID: 100000, guid: db1a6d92e6b5b5f498e7637befb81ca8, type: 2}
+  - Enemy_Bullet: {fileID: 100000, guid: 47af7ace6da72e84f926059d56f95dc7, type: 2}
+  - bulletScript: {instanceID: 0}
+  - shipLife: {instanceID: 0}
+  - score: {instanceID: 0}
+  - dead: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
