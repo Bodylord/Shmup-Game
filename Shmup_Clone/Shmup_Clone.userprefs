@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Blue_Laser.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\shootingScript.cs">
     <Files>
-      <File FileName="Assets\shootingScript.cs" Line="28" Column="2" />
-      <File FileName="Assets\Scripts\PlayerScript.cs" Line="7" Column="21" />
-      <File FileName="Assets\Scripts\Green_Ball.cs" Line="1" Column="1" />
-      <File FileName="Assets\Red_Ball.cs" Line="18" Column="67" />
-      <File FileName="Assets\Blue_Laser.cs" Line="15" Column="1" />
-      <File FileName="Assets\spreadShotScript.cs" Line="108" Column="121" />
+      <File FileName="Assets\Scripts\shootingScript.cs" Line="98" Column="26" />
+      <File FileName="Assets\Scripts\spreadShotScript.cs" Line="78" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

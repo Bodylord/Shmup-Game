@@ -46,8 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Blue_Laser.cs" />
-     <Compile Include="Assets\Red_Ball.cs" />
+     <Compile Include="Assets\Scripts\Blue_Laser.cs" />
      <Compile Include="Assets\Scripts\Green_Ball.cs" />
      <Compile Include="Assets\Scripts\Old_Version\Bullet.cs" />
      <Compile Include="Assets\Scripts\Old_Version\Cannon_LookAt.cs" />
@@ -65,9 +64,10 @@
      <Compile Include="Assets\Scripts\Old_Version\ShipControl.cs" />
      <Compile Include="Assets\Scripts\Old_Version\playerHPcount.cs" />
      <Compile Include="Assets\Scripts\PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\Red_Ball.cs" />
+     <Compile Include="Assets\Scripts\shootingScript.cs" />
+     <Compile Include="Assets\Scripts\spreadShotScript.cs" />
      <Compile Include="Assets\Scripts\test_Fire.cs" />
-     <Compile Include="Assets\shootingScript.cs" />
-     <Compile Include="Assets\spreadShotScript.cs" />
      <Compile Include="Assets\sprites\MenuScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

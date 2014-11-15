@@ -94,7 +94,15 @@ public class shootingScript : MonoBehaviour {
 			muzzleTypes[2].enabled = false;
 		}
 		
-		
+
+		//Spread shot debug key
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Barrels[0].gameObject.GetComponent<spreadShotScript>().enabled = true;
+
+			Barrels[1].gameObject.GetComponent<spreadShotScript>().enabled = true;
+		}
+
 	}
 	
 	void RedAtk()

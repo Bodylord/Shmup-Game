@@ -13,10 +13,7 @@ public class spreadShotScript : MonoBehaviour {
 	public float fireRate;
 	
 	//Arrays
-	public SpriteRenderer[] muzzleTypes;
 	public GameObject[] shipAttacks;
-	public Color[] shipColors;
-	public GameObject[] Barrels;
 	
 	public enum shipType
 	{
@@ -41,19 +38,16 @@ public class spreadShotScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.LeftArrow))
 		{
 			shipCurrent = shipType.Red;
-			shipModel.gameObject.GetComponent<SpriteRenderer>().color = shipColors[0];
 		}
 		
 		if (Input.GetKeyDown (KeyCode.DownArrow))
 		{
 			shipCurrent = shipType.Blue;
-			shipModel.gameObject.GetComponent<SpriteRenderer>().color = shipColors[1];
 		}
 		
 		if (Input.GetKeyDown (KeyCode.RightArrow))
 		{
 			shipCurrent = shipType.Green;
-			shipModel.gameObject.GetComponent<SpriteRenderer>().color = shipColors[2];
 		}
 		
 		// Ship shooting with different colors
@@ -64,15 +58,12 @@ public class spreadShotScript : MonoBehaviour {
 			if(shipCurrent == shipType.Red && Time.time > nextFire)
 			{
 				nextFire = Time.time + fireRate;
-				muzzleTypes[0].enabled = true;
 				RedAtk();
 			}
 			
 			else if(shipCurrent == shipType.Green)
 			{
-				muzzleTypes[2].enabled = true;
-				GrenAtk();
-				
+				GrenAtk();				
 			}
 			
 		}
@@ -81,31 +72,23 @@ public class spreadShotScript : MonoBehaviour {
 		{
 			if(shipCurrent == shipType.Blue)
 			{
-				muzzleTypes[1].enabled = true;
+
 				BluAtk();
 			}
 		}
-		
-		if (Input.GetKeyUp (KeyCode.UpArrow))
-		{
-			muzzleTypes[0].enabled = false;
-			muzzleTypes[1].enabled = false;
-			muzzleTypes[2].enabled = false;
-		}
-		
 		
 	}
 	
 	void RedAtk()
 	{
-		Instantiate(shipAttacks[0], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+		Instantiate(shipAttacks[0], new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 	}
 	
 	void BluAtk()
 	{
 		if (GameObject.Find("BlueLaser") == null)
 		{
-			Instantiate(shipAttacks[1], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+			Instantiate(shipAttacks[1], new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 		}
 	}
 	
@@ -113,7 +96,7 @@ public class spreadShotScript : MonoBehaviour {
 	{
 		if (GameObject.Find("GreenBall") == null)
 		{
-			Instantiate(shipAttacks[2], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+			Instantiate(shipAttacks[2], new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 		}
 	}
 	
