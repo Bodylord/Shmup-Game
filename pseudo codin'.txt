@@ -1,0 +1,25 @@
+Enemy Behaviour:
+Snake-type - if the head of the chain is destroyed, the rest of the chain will also be destroyed. 
+
+void createSnakeChain()
+{
+	//Creating snake head
+
+	Instantiate(snakePartLarge, enemySpawnPoint, transform.rotation);
+
+	//Creating snake body chain
+
+	delaySpawn(1);
+	delaySpawn(2);
+	delaySpawn(3);
+	delaySpawn(4);
+		
+}
+
+IEnumerator delaySpawn(int enemySpacing)
+{
+	yield return new WaitForSeconds(enemySpacing);
+
+	Instantiate(snakePartSmall, enemySpawnPoint, transform.rotation);
+	
+}

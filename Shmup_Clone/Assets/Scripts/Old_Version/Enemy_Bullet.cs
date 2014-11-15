@@ -23,8 +23,6 @@ public class Enemy_Bullet : MonoBehaviour {
 		damage = GameObject.Find ("playerShip").GetComponent<Player_HealthScript>();
 		target = GameObject.Find("playerShip").transform.position;
 		
-		enemyDamage = 10;
-		
 	}
 	
 	// Update is called once per frame
