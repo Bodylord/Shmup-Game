@@ -33,6 +33,9 @@ public class shootingScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+
+		shipCurrent = shipType.Red;
+		shipModel.gameObject.GetComponent<SpriteRenderer>().color = shipColors[0];
 		
 	}
 	

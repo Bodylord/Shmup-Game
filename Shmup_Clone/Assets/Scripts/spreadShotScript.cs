@@ -25,6 +25,8 @@ public class spreadShotScript : MonoBehaviour {
 	public shipType shipCurrent;
 	
 	public GameObject shipModel;
+
+	private shootingScript colorState;
 	
 	
 	// Use this for initialization
@@ -34,18 +36,20 @@ public class spreadShotScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if (Input.GetKeyDown (KeyCode.LeftArrow))
+
+		colorState = GameObject.Find ("mainBarrel").GetComponent<shootingScript>();
+
+		if (colorState.shipCurrent == shootingScript.shipType.Red)
 		{
 			shipCurrent = shipType.Red;
 		}
 		
-		if (Input.GetKeyDown (KeyCode.DownArrow))
+		if (colorState.shipCurrent == shootingScript.shipType.Blue)
 		{
 			shipCurrent = shipType.Blue;
 		}
 		
-		if (Input.GetKeyDown (KeyCode.RightArrow))
+		if (colorState.shipCurrent == shootingScript.shipType.Green)
 		{
 			shipCurrent = shipType.Green;
 		}

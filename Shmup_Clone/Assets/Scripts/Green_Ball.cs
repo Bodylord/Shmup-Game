@@ -49,5 +49,5 @@ public class Green_Ball : MonoBehaviour {
 	{
 		yield return new WaitForSeconds(destroydelay);
 		Destroy(this.gameObject);
-	}
+	}	
 }

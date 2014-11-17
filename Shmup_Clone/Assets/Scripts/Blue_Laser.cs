@@ -20,9 +20,6 @@ public class Blue_Laser : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
-	
 	}
 
 	void FixedUpdate()

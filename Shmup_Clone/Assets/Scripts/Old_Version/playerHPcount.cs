@@ -3,7 +3,7 @@ using System.Collections;
 
 public class playerHPcount : MonoBehaviour {
 
-	public Player_HealthScript shipHealth;
+	public PlayerScript shipHealth;
 
 	// Use this for initialization
 	void Start () {
@@ -13,7 +13,7 @@ public class playerHPcount : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		shipHealth = GameObject.Find ("playerShip").GetComponent<Player_HealthScript>();
+		shipHealth = GameObject.Find ("playership").GetComponent<PlayerScript>();
 
 		guiText.text = "HP " + shipHealth.HP;
 	
