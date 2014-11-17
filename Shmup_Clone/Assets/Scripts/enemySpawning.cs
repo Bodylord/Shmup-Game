@@ -10,10 +10,12 @@ public class enemySpawning : MonoBehaviour {
 	
 	public bool headIsSpawned;
 
+	public int id;
+
 
 	// Use this for initialization
 	void Start () {
-
+		id = 0;
 		headIsSpawned = false;
 	
 	}
@@ -25,6 +27,7 @@ public class enemySpawning : MonoBehaviour {
 		{
 			if (headIsSpawned == false)
 			{
+				id++;
 				createSnakeChain();
 				
 				print("hello");

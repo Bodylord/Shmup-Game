@@ -31,7 +31,7 @@ public class enemyTailScript : MonoBehaviour {
 	public void childColorMatch()
 	{
 		
-		snakeHead = GameObject.Find ("Snake_Head").GetComponent<basicEnemyScript>();
+		snakeHead = GameObject.Find ("Snake_Head " + GameObject.Find ("EnemySpawner").GetComponent<enemySpawning>().id).GetComponent<basicEnemyScript>();
 
 
 			if(snakeHead.enemyCurrent == basicEnemyScript.enemyType.Red)

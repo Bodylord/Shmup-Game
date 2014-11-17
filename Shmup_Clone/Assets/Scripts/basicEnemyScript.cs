@@ -21,7 +21,7 @@ public class basicEnemyScript : MonoBehaviour {
 
 		randomNumber = Random.Range(0,3);
 
-		gameObject.name = "Snake_Head";
+		gameObject.name = "Snake_Head " + GameObject.Find ("EnemySpawner").GetComponent<enemySpawning>().id;
 
 		gameObject.renderer.material.color = enemyColors[randomNumber];
 
@@ -29,19 +29,19 @@ public class basicEnemyScript : MonoBehaviour {
 		if(randomNumber == 0)
 		{
 			gameObject.tag = "Red";
-			gameObject.name = "Snake_Head_Red";
+			//gameObject.name = "Snake_Head_Red";
 			enemyCurrent = enemyType.Red;
 		}
 		if (randomNumber == 1)
 		{
 			gameObject.tag = "Blue";
-			gameObject.name = "Snake_Head_Blue";
+			//gameObject.name = "Snake_Head_Blue";
 			enemyCurrent = enemyType.Blue;
 		}
 		if (randomNumber == 2)
 		{
 			gameObject.tag = "Green";
-			gameObject.name = "Snake_Head_Green";
+			//gameObject.name = "Snake_Head_Green";
 			enemyCurrent = enemyType.Green;
 		}
 
@@ -53,9 +53,10 @@ public class basicEnemyScript : MonoBehaviour {
 		transform.Translate (Vector3.down *3 * Time.deltaTime, Space.Self);
 	}
 
-	void OnTriggerEnter(Collider hit)
+	void OnTriggerEnter2D (Collider2D hit)
 	{
-		if(hit.gameObject.tag == "Green")
+		print("ow");
+		if(hit.tag == "Green")
 		{
 			print("ow");
 			Destroy(gameObject);
