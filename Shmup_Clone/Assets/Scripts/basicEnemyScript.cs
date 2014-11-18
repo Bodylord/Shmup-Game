@@ -29,19 +29,16 @@ public class basicEnemyScript : MonoBehaviour {
 		if(randomNumber == 0)
 		{
 			gameObject.tag = "Red";
-			//gameObject.name = "Snake_Head_Red";
 			enemyCurrent = enemyType.Red;
 		}
 		if (randomNumber == 1)
 		{
 			gameObject.tag = "Blue";
-			//gameObject.name = "Snake_Head_Blue";
 			enemyCurrent = enemyType.Blue;
 		}
 		if (randomNumber == 2)
 		{
 			gameObject.tag = "Green";
-			//gameObject.name = "Snake_Head_Green";
 			enemyCurrent = enemyType.Green;
 		}
 
@@ -50,17 +47,27 @@ public class basicEnemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {	
 
-		transform.Translate (Vector3.down *3 * Time.deltaTime, Space.Self);
+		transform.Translate (Vector3.down *3 * Time.deltaTime, Space.World);
 	}
 
 	void OnTriggerEnter2D (Collider2D hit)
 	{
-		print("ow");
-		if(hit.tag == "Green")
+		if(hit.tag == "Red_Projectile" && this.gameObject.tag == "Red")
 		{
-			print("ow");
+			print("ow red");
 			Destroy(gameObject);
 		}
 		
+		if(hit.tag == "Blue_Projectile" && this.gameObject.tag == "Blue")
+		{
+			print("ow blue");
+			Destroy(gameObject);
+		}
+		
+		if(hit.tag == "Green_Projectile" && this.gameObject.tag == "Green")
+		{
+			print("ow green");
+			Destroy(gameObject);
+		}
 	}
 }

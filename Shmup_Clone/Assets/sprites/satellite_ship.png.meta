@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 8433fe7ff6fded344ba2893c067d0a69
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: satellite_ship
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
