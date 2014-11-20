@@ -117,7 +117,10 @@ public class shootingScript : MonoBehaviour {
 	{
 		if (GameObject.Find("BlueLaser") == null)
 		{
-			Instantiate(shipAttacks[1], new Vector3(transform.position.x, transform.position.y + attackSpawn, transform.position.z), Quaternion.identity);
+			GameObject blulaser = Instantiate(shipAttacks[1], new Vector3(transform.position.x, transform.position.y + attackSpawn, transform.position.z), Quaternion.identity) as GameObject;
+
+			blulaser.transform.parent = this.transform;
+
 		}
 	}
 	
@@ -125,7 +128,9 @@ public class shootingScript : MonoBehaviour {
 	{
 		if (GameObject.Find("GreenBall") == null)
 		{
-			Instantiate(shipAttacks[2], new Vector3(transform.position.x, transform.position.y + attackSpawn, transform.position.z), Quaternion.identity);
+			GameObject grenball = Instantiate(shipAttacks[2], new Vector3(transform.position.x, transform.position.y + attackSpawn, transform.position.z), Quaternion.identity) as GameObject;
+
+			grenball.transform.parent = this.transform;
 		}
 	}
 	

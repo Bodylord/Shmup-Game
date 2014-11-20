@@ -16,10 +16,12 @@ public class Player_HealthScript : MonoBehaviour {
 
 	private int initHP = 10;
 
+	public bool canTakeDamage;
+
 	// Use this for initialization
 	void Start () {
 
-		//enemybullethere = GameObject.Find ("enemyBullet").GetComponent<Enemy_Bullet>();
+		canTakeDamage = true;
 
 		initHP = HP;
 
@@ -27,6 +29,13 @@ public class Player_HealthScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//killing player debug
+		if(Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			HP = 0;
+		}
+
 
 		if (HP <= 0)
 		{
@@ -62,7 +71,11 @@ public class Player_HealthScript : MonoBehaviour {
 	public void RespawnShip(){
 
 		HP = initHP;
-		playerShip.transform.position = Vector3.zero ;
+		playerShip.transform.position = Vector3.zero;
+		shipInvulnFlash();
+
+		canTakeDamage = true;
+
 	}
 
 	public void OnTriggerEnter(Collider col){
@@ -87,6 +100,21 @@ public class Player_HealthScript : MonoBehaviour {
 				
 			}
 			
+		}
+
+	IEnumerator shipInvulnFlash()
+		{
+			
+			canTakeDamage = false;
+
+			yield return new WaitForSeconds(1);
+			this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(1);
+			this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(1);
+			this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(1);
+			this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 		}
 
 	}

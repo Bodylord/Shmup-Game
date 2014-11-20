@@ -31,25 +31,19 @@ public class LifeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//IsAlive();
 
 		checkLives();
 
 		if (timer < 0.0f)
 		{
-			//enemy spawn function
-			enemySpawn();
-
-			timer = timerLength;
 		}
 		timer -= Time.deltaTime;
 
 
 
-		if (EnemyDeaths == 20)
+		if (EnemyDeaths == 500)
 		{
-			print ("winnar");
-			Application.LoadLevel ("win_screen");
+
 		}
 		
 				
@@ -69,14 +63,6 @@ public class LifeManager : MonoBehaviour {
 		return false; 
 		}
 		*/
-
-	void enemySpawn(){
-		for (int i = 0 ; i < EnemyCount; i++)
-			{
-				Instantiate (enemyWeak, spawnLocations[Random.Range(0, spawnLocations.Length)], Quaternion.LookRotation(Vector3.forward));
-				Instantiate (enemyStrong, spawnLocations[Random.Range(0, spawnLocations.Length)], Quaternion.LookRotation(Vector3.forward));
-			}
-	}
 
 	public void checkLives()
 	{

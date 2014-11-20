@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Red_Ball : MonoBehaviour {
 
-	public float Speed;
+	public static float Speed = 5;
 
 	public int currentLevel;
 
 	// Use this for initialization
 	void Start () {
 	
+		 
+
 	}
 	
 	// Update is called once per frame

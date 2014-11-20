@@ -22,10 +22,14 @@ public class PlayerScript : MonoBehaviour {
 //Lifemanager script
 	public LifeManager lm;
 
+//Player ship movement 'animation'
+	public Sprite[] shipSpriteMovements;
 
 		// Use this for initialization
 	void Start () {
 	
+	gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[0];
+
 	}
 	
 	// Update is called once per frame
@@ -35,22 +39,31 @@ public class PlayerScript : MonoBehaviour {
 //Player Ship Controls
 		if (Input.GetKey(KeyCode.W))
 		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[1];
 			transform.Translate(Vector3.up * Speed);
 		}
 
 		if(Input.GetKey(KeyCode.A))
 		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[3];
 			transform.Translate(Vector3.left * Speed);
 		}
 
 		if (Input.GetKey(KeyCode.S))
 		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[2];
 			transform.Translate(Vector3.down * Speed);
 		}
 
 		if (Input.GetKey(KeyCode.D))
 		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[4];
 			transform.Translate(Vector3.right * Speed);
+		}
+
+		if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+		{
+			gameObject.GetComponent<SpriteRenderer>().sprite = shipSpriteMovements[0];
 		}
 
 //Ship lives, damage and mitigating damage conditions

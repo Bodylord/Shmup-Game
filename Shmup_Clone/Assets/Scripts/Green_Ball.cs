@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Green_Ball : MonoBehaviour {
 
-	public float Speed;
-	public float explosionSize;
-	public float explosionSpeed;
+	public static float Speed = 4f;
+	public static float explosionSize = 0.5f;
+	public static float explosionSpeed = 4f;
 	public float destroydelay;
 
 	public bool isLerping;

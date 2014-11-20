@@ -4,9 +4,9 @@ using System.Collections;
 public class Blue_Laser : MonoBehaviour {
 
 
-	public float maxLaserScale;
-	public float laserSpeed; 
-	public float destroydelay;
+	public static float maxLaserScale = 1f;
+	public static float laserSpeed = 3f; 
+	public static float destroydelay = 0.3f;
 
 	public bool isLerping;
 
