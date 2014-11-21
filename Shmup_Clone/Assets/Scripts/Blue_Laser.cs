@@ -4,11 +4,13 @@ using System.Collections;
 public class Blue_Laser : MonoBehaviour {
 
 
-	public static float maxLaserScale = 1f;
+	public static float maxLaserScale = 3f;
 	public static float laserSpeed = 3f; 
 	public static float destroydelay = 0.3f;
+	public static float laserWidth = 0;
 
 	public bool isLerping;
+	public bool isWider;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +22,9 @@ public class Blue_Laser : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		transform.localScale = new Vector3(transform.localScale.x + laserWidth, transform.localScale.y, transform.localScale.z);
+
 	}
 
 	void FixedUpdate()

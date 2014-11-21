@@ -29,9 +29,8 @@ public class basicEnemyScript : MonoBehaviour {
 
 	private Green_Ball GreenBall;
 	private shootingScript RedBallrate;
-
+	private spreadShotScript RedBallSpread;
 	private Red_Ball RedBall;
-
 	private Blue_Laser BlueLaser;
 
 	// Use this for initialization
@@ -84,6 +83,7 @@ public class basicEnemyScript : MonoBehaviour {
 
 		lm = GameObject.Find("Game Manager").GetComponent<LifeManager>();
 		RedBallrate = GameObject.FindObjectOfType<shootingScript>() as shootingScript;
+		spreadShotScript[] RedBallSpread = GameObject.FindObjectsOfType<spreadShotScript>() as spreadShotScript[];
 
 		if(hit.tag == "Red_Projectile" && this.gameObject.tag == "Red")
 		{
@@ -96,12 +96,18 @@ public class basicEnemyScript : MonoBehaviour {
 					Destroy(t.gameObject);
 					lm.EnemyDeaths ++;
 					RedBallrate.fireRate -= 0.02f;
+					RedBallSpread[0].fireRate -= 0.02f;
+					RedBallSpread[1].fireRate -= 0.02f;
 					Red_Ball.Speed += 2f;
+					Red_Ball.bulletWidth += 0.004f;
 				}
 			}
 			lm.EnemyDeaths ++;
 			RedBallrate.fireRate -= 0.02f;
+			RedBallSpread[0].fireRate -= 0.02f;
+			RedBallSpread[1].fireRate -= 0.02f;
 			Red_Ball.Speed += 2f;
+			Red_Ball.bulletWidth += 0.004f;
 			Destroy(gameObject);
 
 			//SnakeTail.gameObject.GetComponent<enemyTailScript>().isHeadDead = true;
@@ -115,15 +121,17 @@ public class basicEnemyScript : MonoBehaviour {
 			{
 				if (t.gameObject.name.Equals ("Snake Tail " + id))
 				{
-					Blue_Laser.maxLaserScale += 0.2f;
-					Blue_Laser.laserSpeed += 0.2f;
+					Blue_Laser.maxLaserScale += 0.02f;
+					Blue_Laser.laserSpeed += 0.02f;
+					Blue_Laser.laserWidth += 0.005f;
 					lm.EnemyDeaths ++;
 					Destroy(t.gameObject);
 
 				}
 			}
-			Blue_Laser.maxLaserScale += 0.2f;
-			Blue_Laser.laserSpeed += 0.2f;
+			Blue_Laser.maxLaserScale += 0.02f;
+			Blue_Laser.laserSpeed += 0.02f;
+			Blue_Laser.laserWidth += 0.005f;
 			lm.EnemyDeaths ++;
 			Destroy(gameObject);
 
@@ -137,17 +145,17 @@ public class basicEnemyScript : MonoBehaviour {
 			{
 				if (t.gameObject.name.Equals ("Snake Tail " + id))
 				{
-					Green_Ball.Speed += 0.5f;
-					Green_Ball.explosionSize += 0.2f;
-					Green_Ball.explosionSpeed += 0.4f;
+					Green_Ball.Speed += 0.05f;
+					Green_Ball.explosionSize += 0.02f;
+					Green_Ball.explosionSpeed += 0.04f;
 					lm.EnemyDeaths ++;
 					Destroy(t.gameObject);
 
 				}
 			}
-			Green_Ball.Speed += 0.5f;
-			Green_Ball.explosionSize += 0.2f;
-			Green_Ball.explosionSpeed += 0.4f;
+			Green_Ball.Speed += 0.05f;
+			Green_Ball.explosionSize += 0.02f;
+			Green_Ball.explosionSpeed += 0.04f;
 			lm.EnemyDeaths ++;
 			Destroy(gameObject);
 
