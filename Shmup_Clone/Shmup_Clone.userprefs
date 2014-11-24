@@ -1,5 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\basicEnemyScript.cs">
     <Files>
       <File FileName="Assets\Scripts\PlayerScript.cs" Line="1" Column="1" />
@@ -13,6 +14,24 @@
       <File FileName="Assets\Scripts\Old_Version\LifeManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Red_Ball.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Blue_Laser.cs" Line="1" Column="1" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\bossLaser.cs">
+    <Files>
+      <File FileName="Assets\Scripts\BossScript.cs" Line="7" Column="32" />
+      <File FileName="Assets\Scripts\basicEnemyScript.cs" Line="175" Column="6" />
+      <File FileName="Assets\Scripts\enemySpawning.cs" Line="61" Column="10" />
+      <File FileName="Assets\Scripts\PlayerScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyTailScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\shootingScript.cs" Line="143" Column="34" />
+      <File FileName="Assets\Scripts\Blue_Laser.cs" Line="35" Column="3" />
+      <File FileName="Assets\Scripts\Old_Version\Bullet.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Old_Version\Cannon_Shoot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Old_Version\Enemy_Bullet.cs" Line="36" Column="74" />
+      <File FileName="Assets\Scripts\Old_Version\LifeManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\bossWeakPoint.cs" Line="72" Column="62" />
+      <File FileName="Assets\bossLaser.cs" Line="36" Column="38" />
+      <File FileName="Assets\bossAttack.cs" Line="22" Column="38" />
+>>>>>>> cdb62965f9c219dedd7b7155149462399f73863e
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

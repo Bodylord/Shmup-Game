@@ -21,6 +21,7 @@ public class LifeManager : MonoBehaviour {
 	void Start () {
 
 		Lives = 3;
+//		EnemyDeaths = 1;
 
 		//enemy respawn timer length
 		timerLength = 10f;
@@ -38,13 +39,6 @@ public class LifeManager : MonoBehaviour {
 		{
 		}
 		timer -= Time.deltaTime;
-
-
-
-		if (EnemyDeaths == 500)
-		{
-
-		}
 		
 				
 		

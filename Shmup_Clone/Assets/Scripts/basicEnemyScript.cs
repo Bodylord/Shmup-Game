@@ -19,14 +19,19 @@ public class basicEnemyScript : MonoBehaviour {
 
 	public Transform playerShipAsTarget;
 
+	public float Speed = 10f;
+	public float Travelled = 0;
+	public float LifeTime = 2.5f;
+
+	public GameObject Bullet;
+	public float enemyFireRate;
+	public bool isBulletFired;
+
 	private int id;
-
 	private enemyTailScript SnakeTail;
-
 	private LifeManager lm;
 
 	//player bullet types for upgrades
-
 	private Green_Ball GreenBall;
 	private shootingScript RedBallrate;
 	private spreadShotScript RedBallSpread;
@@ -35,7 +40,9 @@ public class basicEnemyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		print ("my transform " + transform.position);
+
+		isBulletFired = false;
+
 		randomNumber = Random.Range(0,3);
 
 		gameObject.name = "Snake_Head " + GameObject.Find ("EnemySpawner").GetComponent<enemySpawning>().id;
@@ -69,15 +76,36 @@ public class basicEnemyScript : MonoBehaviour {
 //		Quaternion rotation = Quaternion.LookRotation (playerShipAsTarget.transform.position - transform.position, transform.TransformDirection(playerShipAsTarget.position));
 //		transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-		Vector3 diff = playerShipAsTarget.position - transform.position;
+		Vector3 diff = GameObject.Find ("playership").transform.position - transform.position;
 		diff.Normalize();
-		
+
 		float rot = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(0f, 0f, rot-90);
 
-		transform.Translate (Vector3.down *3 * Time.deltaTime, Space.World);
-	}
+		if(isBulletFired == false)
+		{
+		StartCoroutine(fireBullet(enemyFireRate));
+		isBulletFired = true;
+		}
 
+		//transform.Translate(derp);
+		Travelled += 0.01f;
+		
+		if (Travelled >= LifeTime)
+		{
+			Destroy(gameObject);
+			enemyTailScript[] tailScripts = GameObject.FindObjectsOfType<enemyTailScript>()  as enemyTailScript[];
+			foreach (enemyTailScript t in tailScripts)
+			{
+				if (t.gameObject.name.Equals ("Snake Tail " + id))
+				{
+					Destroy(t.gameObject);
+				}
+
+			}
+		}
+	}
+	
 	void OnTriggerEnter2D (Collider2D hit)
 	{
 
@@ -87,7 +115,6 @@ public class basicEnemyScript : MonoBehaviour {
 
 		if(hit.tag == "Red_Projectile" && this.gameObject.tag == "Red")
 		{
-			print("ow red");
 			enemyTailScript[] tailScripts = GameObject.FindObjectsOfType<enemyTailScript>()  as enemyTailScript[];
 			foreach (enemyTailScript t in tailScripts)
 			{
@@ -115,7 +142,7 @@ public class basicEnemyScript : MonoBehaviour {
 		
 		if(hit.tag == "Blue_Projectile" && this.gameObject.tag == "Blue")
 		{
-			print("ow blue");
+			
 			enemyTailScript[] tailScripts = GameObject.FindObjectsOfType<enemyTailScript>()  as enemyTailScript[];
 			foreach (enemyTailScript t in tailScripts)
 			{
@@ -139,7 +166,7 @@ public class basicEnemyScript : MonoBehaviour {
 		
 		if(hit.tag == "Green_Projectile" && this.gameObject.tag == "Green")
 		{
-			print("ow green");
+			
 			enemyTailScript[] tailScripts = GameObject.FindObjectsOfType<enemyTailScript>()  as enemyTailScript[];
 			foreach (enemyTailScript t in tailScripts)
 			{
@@ -161,5 +188,14 @@ public class basicEnemyScript : MonoBehaviour {
 
 
 		}
+	}
+
+	IEnumerator fireBullet(float fireRate)
+	{
+		yield return new WaitForSeconds(fireRate);
+
+		Instantiate (Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+
+		isBulletFired = false;
 	}
 }

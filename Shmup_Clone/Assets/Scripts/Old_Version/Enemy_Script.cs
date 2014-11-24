@@ -96,7 +96,7 @@ public class Enemy_Script : MonoBehaviour {
 
 	public void fireBullet(){
 
-		GameObject bul = Instantiate (Enemy_Bullet, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity) as GameObject;
+		//GameObject bul = Instantiate (Enemy_Bullet, new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z), Quaternion.identity) as GameObject;
 	}
 
 	void OnTriggerEnter(Collider col)

@@ -21,7 +21,7 @@ public class test_Fire : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			
 			{
-				GameObject bul = Instantiate (Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation) as GameObject;
+				//GameObject bul = Instantiate (Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation) as GameObject;
 				
 				/*bul.rigidbody.AddForce(Vector3.up * bulletspeed);*/
 			}

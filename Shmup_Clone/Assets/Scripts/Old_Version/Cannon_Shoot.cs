@@ -26,7 +26,7 @@ public class Cannon_Shoot : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 
 			{
-				GameObject bul = Instantiate (Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject;
+				Instantiate (Bullet, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
 					
 				/*bul.rigidbody.AddForce(Vector3.up * bulletspeed);*/
 			}

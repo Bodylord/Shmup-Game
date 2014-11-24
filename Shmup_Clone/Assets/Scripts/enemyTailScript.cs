@@ -29,6 +29,12 @@ public class enemyTailScript : MonoBehaviour {
 		
 		childColorMatch();
 
+		if (snakeHead == null)
+		{
+			Destroy(gameObject);
+		}
+
+
 		gameObject.GetComponent<Animator>().SetInteger ("pattern", snakeHead.GetComponent<Animator>().GetInteger("pattern"));
 
 	}
@@ -41,10 +47,9 @@ public class enemyTailScript : MonoBehaviour {
 			Destroy(this.gameObject);
 		}
 
-
-		Vector3 diff = playerShipAsTarget.position - transform.position;
+		Vector3 diff = GameObject.Find ("playership").transform.position - transform.position;
 		diff.Normalize();
-
+		
 		float rot = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler(0f, 0f, rot-90);
 
