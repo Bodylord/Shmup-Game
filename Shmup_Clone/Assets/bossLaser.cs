@@ -6,8 +6,8 @@ public class bossLaser : MonoBehaviour {
 	//Laser Properties
 
 	public static float maxLaserScale = 100f;
-	public static float laserSpeed = 0.5f; 
-	public float destroydelay = 1000f;
+	public static float laserSpeed = 0.01f; 
+	public float destroydelay = 100f;
 	public static float laserWidth = 0;
 	
 	public bool isLerping;
@@ -41,8 +41,9 @@ public class bossLaser : MonoBehaviour {
 
 			isLerping = false;
 
-			if (bossScript.gameObject.transform.localScale.z >= bossScript.stageTwoRotation.z - 60)
+			if (bossScript.gameObject.transform.localRotation.z >= bossScript.gameObject.transform.localRotation.z + 145)
 			{
+				print("hello i am dying");
 				StartCoroutine(delaydestroy());
 			}
 
