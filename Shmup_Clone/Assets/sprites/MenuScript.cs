@@ -15,6 +15,6 @@ public class MenuScript : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Application.LoadLevel("Main");
+		Application.LoadLevel("ship test");
 	}
 }

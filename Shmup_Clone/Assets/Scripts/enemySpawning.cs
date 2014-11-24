@@ -5,42 +5,86 @@ public class enemySpawning : MonoBehaviour {
 
 	public GameObject snakePartLarge;
 	public GameObject snakePartSmall;
+	public GameObject largeGuy;
+	public GameObject Boss;
 
 	public Vector3[] spawnLocations;
 	public Animation sideAnimation;
-	public int spawnPoint; 
 
-	public bool headIsSpawned;
+	public int spawnPoint; 
+	public int Speed = 5;
+
+	public int[] largeEnemySpawnRange;
+	public int largeEnemySpawnRandom;
+
+	public int bossSpawnPoint = 24;
+
+
+	public bool isHeadSpawned;
+	public bool isSpawningEnemy;
+	public bool isLargeEnemySpawned;
+	public bool isBossSpawned;
 
 	public int id;
-
+	public int largeId;
 	public int counter = 0;
 	public int snakeTailLength;
+	public int randomLargeSpawner;
+
+	public float spawnTimer = 3f;
+
+	public LifeManager lm;
+
+	public int largeEnemyDeaths;
 
 
 	// Use this for initialization
 	void Start () {
 
+		largeEnemyDeaths = 0;
 		id = 0;
-		headIsSpawned = false;
+		largeId = 0;
+		isHeadSpawned = false;
+		isBossSpawned = false;
+		isLargeEnemySpawned = false;
+
+
+		largeEnemySpawnRange = new int[] { 7, 12};
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.Z))
+		lm = GameObject.Find("Game Manager").GetComponent<LifeManager>();
+
+		//debug
+		if (Input.GetKeyDown(KeyCode.Backspace))
 		{
-			if (headIsSpawned == false)
-			{
-				id++;
-				createSnakeChain();
-				headIsSpawned = true;
-			}
-			
+			spawnBoss();
+		}
+		
+		if (largeEnemyDeaths >= 5 && !isBossSpawned)
+		{
+			print("spawning boss");
+			spawnBoss();
+			isBossSpawned = true;
 		}
 
+		if(!isBossSpawned)
+		{
+			if (!isSpawningEnemy)
+			{
+			StartCoroutine(spawnNormalEnemy(spawnTimer));
+			}
 
+			if ((lm.EnemyDeaths%5 == 0) && lm.EnemyDeaths > 0 && !isLargeEnemySpawned)
+			{
+				isLargeEnemySpawned = true;
+				print("spawning large enemy");
+				StartCoroutine(spawnLargeEnemy(spawnTimer + 3));
+			}
+		}
 		/*
 		while (counter < snakeTailLength && headIsSpawned == true)
 		{
@@ -55,13 +99,14 @@ public class enemySpawning : MonoBehaviour {
 		*/
 
 
-		if (headIsSpawned == true)
+		if (isHeadSpawned == true)
 		{
 			StartCoroutine(delaySpawn(0.1f));
 			StartCoroutine(delaySpawn(0.2f));
 			StartCoroutine(delaySpawn(0.3f));
 			StartCoroutine(delaySpawn(0.4f));
-			headIsSpawned = false;
+			isSpawningEnemy = false;
+			isHeadSpawned = false;
 		}
 		
 		
@@ -74,7 +119,6 @@ public class enemySpawning : MonoBehaviour {
 		GameObject snakeHead = Instantiate(snakePartLarge, spawnLocations[spawnPoint], transform.rotation) as GameObject;
 		Animator headAnim = snakeHead.GetComponentInChildren<Animator>();
 
-		print ("spawnPoint = " + spawnPoint + " spawn location  = " + spawnLocations[spawnPoint]);
 
 		if (spawnPoint >= 0 && spawnPoint <= 6)
 		{
@@ -102,10 +146,32 @@ public class enemySpawning : MonoBehaviour {
 			headAnim.SetInteger ("pattern", bottomClips[Random.Range (0, bottomClips.Length)]);
 		}
 
-		print("Animation "  + headAnim.GetInteger("pattern"));
+
 
 	}
-	
+
+
+
+
+	void spawnBoss()
+	{
+		GameObject bossEnemy = Instantiate(Boss, spawnLocations[bossSpawnPoint], transform.rotation) as GameObject;
+		isBossSpawned = false;
+	}
+
+	IEnumerator spawnLargeEnemy(float enemySpacing)
+	{
+		yield return new WaitForSeconds(enemySpacing);
+
+		randomLargeSpawner = largeEnemySpawnRange[Random.Range (0, largeEnemySpawnRange.Length)];
+
+		largeId ++;
+		GameObject largeEnemy = Instantiate(largeGuy, spawnLocations[randomLargeSpawner], transform.rotation) as GameObject;
+
+		isLargeEnemySpawned = false;
+		
+	}
+
 	IEnumerator delaySpawn(float enemySpacing)
 	{
 		
@@ -113,5 +179,19 @@ public class enemySpawning : MonoBehaviour {
 		
 		Instantiate(snakePartSmall, spawnLocations[0], transform.rotation);
 				
+	}
+
+	IEnumerator spawnNormalEnemy(float enemySpawnTime)
+	{
+		isSpawningEnemy = true;
+
+		yield return new WaitForSeconds(enemySpawnTime);
+
+		if (isHeadSpawned == false)
+			{
+				id++;
+				createSnakeChain();
+				isHeadSpawned = true;
+			}
 	}
 }

@@ -29,6 +29,12 @@ public class shootingScript : MonoBehaviour {
 	public shipType shipCurrent;
 	
 	public GameObject shipModel;
+
+	private Green_Ball GreenBall;
+	private shootingScript RedBallrate;
+	private spreadShotScript RedBallSpread;
+	private Red_Ball RedBall;
+	private Blue_Laser BlueLaser;
 	
 	
 	// Use this for initialization
@@ -41,6 +47,9 @@ public class shootingScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		RedBallrate = GameObject.FindObjectOfType<shootingScript>() as shootingScript;
+		spreadShotScript[] RedBallSpread = GameObject.FindObjectsOfType<spreadShotScript>() as spreadShotScript[];
 		
 		if (Input.GetKeyDown (KeyCode.LeftArrow))
 		{
@@ -104,6 +113,34 @@ public class shootingScript : MonoBehaviour {
 			Barrels[0].gameObject.GetComponent<spreadShotScript>().enabled = true;
 
 			Barrels[1].gameObject.GetComponent<spreadShotScript>().enabled = true;
+		}
+
+		//Weapon Steroids debug
+
+		//red
+		if(Input.GetKeyDown (KeyCode.Alpha1))
+		{
+			RedBallrate.fireRate -= 1f;
+			RedBallSpread[0].fireRate -= 1f;
+			RedBallSpread[1].fireRate -= 1f;
+			Red_Ball.Speed += 5f;
+			Red_Ball.bulletWidth += 1f;
+		}
+
+		//blue
+		if(Input.GetKeyDown (KeyCode.Alpha2))
+		{
+			Blue_Laser.maxLaserScale += 1f;
+			Blue_Laser.laserSpeed += 1f;
+			Blue_Laser.laserWidth += 1f;
+		}
+
+		//green
+		if(Input.GetKeyDown (KeyCode.Alpha3))
+		{
+			Green_Ball.Speed += 1f;
+			Green_Ball.explosionSize += 1f;
+			Green_Ball.explosionSpeed += 1f;
 		}
 
 	}

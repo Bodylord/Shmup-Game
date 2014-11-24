@@ -9,16 +9,11 @@ public class Bullet : MonoBehaviour {
 	public int playerDamage;
 
 	public GameObject Bullethere;
-	public GameObject targetpls;
 	public Vector3 bulletPos;
-	public Vector3 target;
 
 	// Use this for initialization
 
 	void Start () {
-
-	
-		target = GameObject.Find("Mouse_Slave").transform.position;
 
 		playerDamage = 10;
 
@@ -45,6 +40,7 @@ public class Bullet : MonoBehaviour {
 		}*/
 
 
+		Travelled += 0.3f;
 
 		if (Travelled >= LifeTime)
 		{
